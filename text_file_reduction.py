@@ -37,6 +37,7 @@ list_of_xs = [x,x,x,x,x]
 list_of_xt = [x1,x2,x3,...]
 where x1 is the average values for x for t = 1
 list_of_xcounts = [2,5,4,3,5,6,7,2,2,3,0,3,4,5,4,2....]
+this is a test
 
 # End user input -------------------------------------------------------------------------------------------------------
 
@@ -72,5 +73,5 @@ with open(file_input + input_file_type, "r") as rf_txt:
 # this is more brainstorming user input, that would change the first column in the text file depending on
 # seconds (0.02 intervals) or meters (1 intervals)
 
-# time_unit = input('Is your time unit in "meters" or "seconds"? : ')
+
 
