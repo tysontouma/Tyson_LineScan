@@ -20,19 +20,22 @@ with open('ten_lines.txt', "r") as txt:
                 list_of_ts_w_xs.append(ts_w_xs)
                 list_of_xs.append(x)
 
-                avg_x = sum(list_of_xs) / len(list_of_xs)
-                list_of_xt.append(avg_x)
-                avg_x = 0
+                # this is useless because takes average for every line
+                # avg_x = sum(list_of_xs) / len(list_of_xs)
+                # list_of_xt.append(avg_x)
+                # avg_x = 0
+        # this is when it moves from 0 sec to 0.02 sec
         else:
+            avg_x = sum(list_of_xs) / len(list_of_xs)
+            list_of_xt.append(avg_x)
+            avg_x = 0
             t_main = t_main + 1/freq
+            # i wrote this whole section again because it skips the first entry of 0.02 sec
             if abs(abs(y) - abs(y_relative)) <= tol:
                 ts_w_xs = [t , x]
                 list_of_ts_w_xs.append(ts_w_xs)
                 list_of_xs.append(x)
 
-                avg_x = sum(list_of_xs) / len(list_of_xs)
-                list_of_xt.append(avg_x)
-                avg_x = 0
 print(list_of_xs)
 print()
 print(list_of_xt)
