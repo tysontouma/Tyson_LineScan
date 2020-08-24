@@ -4,6 +4,7 @@ y_relative = -2
 tol = 0.11
 list_of_xs = []
 list_of_xt = []
+list_of_ts_w_xs = []
 
 with open('ten_lines.txt', "r") as txt:
     for line in txt:
@@ -13,13 +14,28 @@ with open('ten_lines.txt', "r") as txt:
         x = float(row[1])
         y = float(row[2])
         if t == t_main:
-            list_of_xs = []
-            if y == y_relative-+tol:
+            # list_of_xs = []
+            if abs(abs(y) - abs(y_relative)) <= tol:
+                ts_w_xs = [t , x]
+                list_of_ts_w_xs.append(ts_w_xs)
                 list_of_xs.append(x)
+
                 avg_x = sum(list_of_xs) / len(list_of_xs)
                 list_of_xt.append(avg_x)
                 avg_x = 0
-        if t > t_main:
+        else:
             t_main = t_main + 1/freq
-print(t_main)
+            if abs(abs(y) - abs(y_relative)) <= tol:
+                ts_w_xs = [t , x]
+                list_of_ts_w_xs.append(ts_w_xs)
+                list_of_xs.append(x)
+
+                avg_x = sum(list_of_xs) / len(list_of_xs)
+                list_of_xt.append(avg_x)
+                avg_x = 0
+print(list_of_xs)
+print()
+print(list_of_xt)
+print()
+print(list_of_ts_w_xs)
 
