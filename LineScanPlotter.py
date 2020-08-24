@@ -21,7 +21,7 @@ for line in f:
     # if X > t_start*freq:
     #     X += 1
     #     continue
-    lineCount =+ step
+    lineCount =+ 1
     # row = line.strip("\n").replace('"','').split("\t")
     row = line.strip("\n").split(",")
     x = float(row[0])
