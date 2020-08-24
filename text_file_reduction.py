@@ -17,27 +17,28 @@ from pip._vendor.distlib.compat import raw_input
 
 # this section is user input to where they can choose what file to be read by the code
 
-# file_input = raw_input('Enter the  name of a file you want to read: ')
-
 # User Input -------------------------------------------------------------------------------------------------------
 file_input = 't3_lineplot'
 input_file_type = '.txt'
 step_input = 10
 y_relative = -2  # m
-tol = 0.01  # m
+tol = 0.11  # m
 frequency = 50  # hz
 outputFileNameExtension = '_copy'
 
 # output text file is a csv with columns t,x-xt,y
+
 # for each line t = t_in_L/frequency
-t = 1
-find all the x values for points with y-+tol
+
+t = 1 # some time
+
+find all the x values for points with y-+tol # if y-+tol in row ...
     when t = 2
-list_of_xs = [x,x,x,x,x]
+list_of_xs = [x,x,x,x,x] # all x values with the same t within y tolerance
 list_of_xt = [x1,x2,x3,...]
-where x1 is the average values for x for t = 1
-list_of_xcounts = [2,5,4,3,5,6,7,2,2,3,0,3,4,5,4,2....]
-this is a test
+where x1 is the average values for x for t = 1 #some time
+list_of_xcounts = [2,5,4,3,5,6,7,2,2,3,0,3,4,5,4,2....] # the amount of x's in "list_of_xs" for each t, with the first t being 0 seconds
+
 
 # End user input -------------------------------------------------------------------------------------------------------
 
