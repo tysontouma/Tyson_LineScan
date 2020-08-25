@@ -3,7 +3,7 @@ t_main = 0
 y_relative = -2
 tol = 0.11
 list_of_xs = []
-list_of_ts_w_xt = []
+list_of_ts_w_xt = [0]
 list_of_ts_w_xs = []
 
 with open('ten_lines.txt', "r") as txt:
@@ -19,6 +19,11 @@ with open('ten_lines.txt', "r") as txt:
                 ts_w_xs = [t , x]
                 list_of_ts_w_xs.append(ts_w_xs)
                 list_of_xs.append(x)
+                if t == 0.0:
+                    avg_x = sum(list_of_xs) / len(list_of_xs)
+                    ts_w_xt = [t, avg_x]
+                    list_of_ts_w_xt[0] = ts_w_xt
+                    avg_x = 0
 
                 # this is useless because takes average for every line
                 # avg_x = sum(list_of_xs) / len(list_of_xs)
