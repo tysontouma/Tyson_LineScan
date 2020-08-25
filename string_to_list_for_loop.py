@@ -1,5 +1,7 @@
+t_min = 0
+t_max = 0.1
 freq = 50
-t_main = 0
+t_main = t_min
 y_relative = -2
 tol = 0.11
 list_of_xs = []
@@ -19,7 +21,10 @@ with open('ten_lines.txt', "r") as txt:
                 ts_w_xs = [t , x]
                 list_of_ts_w_xs.append(ts_w_xs)
                 list_of_xs.append(x)
-
+                if t == t_max: # PROBLEM AREA
+                    avg_x = sum(list_of_xs) / len(list_of_xs)
+                    ts_w_xt = [t, avg_x]
+                    list_of_ts_w_xt.append(ts_w_xt)
 
                 # this is useless because takes average for every line
                 # avg_x = sum(list_of_xs) / len(list_of_xs)
@@ -39,7 +44,10 @@ with open('ten_lines.txt', "r") as txt:
                 ts_w_xs = [t , x]
                 list_of_ts_w_xs.append(ts_w_xs)
                 list_of_xs.append(x)
-
+                if t == t_max: #PROBLEM AREA
+                    avg_x = sum(list_of_xs) / len(list_of_xs)
+                    ts_w_xt = [t, avg_x]
+                    list_of_ts_w_xt.append(ts_w_xt)
 
 print(list_of_ts_w_xt)
 print()
