@@ -104,3 +104,8 @@ test = 1
 
 test = 1
 
+# QUESTIONS FOR TATSU:
+# 1) because of floating my relative x displacements are having too many decimals.I was going to
+# use the round function on everything to 8 decimal places (what the original text file has). Thoughts?
+# 2) is the "dont_forget_me" part of the code worrysome to you?
+# 3) I apologize for all of the variables, any suggestions on to make the code cleaner and tidy it up?
