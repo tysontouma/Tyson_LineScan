@@ -1,7 +1,8 @@
 # User Input -------------------------------------------------------------------------------------------------------
 file_input = 'ten_lines'
 input_file_type = '.txt'
-outputFileNameExtension = '_t_x_rel'
+outputFileNameExtension_minus = '_minus'
+outputFileNameExtension = '_copy'
 
 t_min = 0
 t_max = 0.1
@@ -19,7 +20,7 @@ list_of_ts_w_xs = []
 counter = 0
 
 with open(file_input + input_file_type, "r") as rf_txt:
-    with open(file_input + outputFileNameExtension + input_file_type, "w") as wf_txt:
+    with open(file_input + outputFileNameExtension_minus + input_file_type, "w") as wf_txt:
         for line in rf_txt:
             row = line.strip("\n").split("\t")
             t_in_l = float(row[0])
@@ -52,6 +53,46 @@ with open(file_input + input_file_type, "r") as rf_txt:
 
         avg_x = sum(list_of_xs) / len(list_of_xs)
         wf_txt.write(str(t) + '\t' + str(avg_x) + '\n') # new
+
+
+t_sub_main = 0
+counter2 = 0
+list_of_x_rel = []
+dont_forget_me = False
+
+with open(file_input + input_file_type, "r") as rf_txt2:
+    with open(file_input + outputFileNameExtension_minus + input_file_type, "r") as rf_txt3:
+        with open(file_input + outputFileNameExtension + input_file_type , "w") as wf_txt2:
+            for line in rf_txt3:
+                row_sub = line.strip("\n").split("\t")
+                t_sub = float(row_sub[0])
+                x_sub = float(row_sub[1])
+                if dont_forget_me:
+                    if abs(t_rel - t_sub) < 0.00000001:
+                        x_rel = x_orig - x_sub
+                        # wf_txt2.write(str(t_sub_main) + '\t' + str(x_rel) + '\t' + str(y_orig) + '\n')
+                        list_of_x_rel.append(x_rel)
+                for line in rf_txt2:
+                    row_rel = line.strip("\n").split("\t")
+                    t_in_l_rel = float(row_rel[0])
+                    t_rel = t_in_l_rel / freq
+                    x_orig = float(row_rel[1])
+                    y_orig = float(row_rel[2])
+                    if abs(t_rel - t_sub) < 0.00000001:
+                        x_rel = x_orig - x_sub
+                        # wf_txt2.write(str(t_sub) + '\t' + str(x_rel) + '\t' + str(y_orig) + '\n')
+                        list_of_x_rel.append(x_rel)
+                    else:
+                        dont_forget_me = True
+                        break
+
+                    counter2 = counter2 + 1
+print(list_of_x_rel)
+print(len(list_of_x_rel))
+test = 1
+
+
+
 
 
 
