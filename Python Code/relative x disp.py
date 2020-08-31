@@ -16,10 +16,11 @@ list_of_ts_w_xt = []
 list_of_ts_w_xs = []
 
 # End user input -------------------------------------------------------------------------------------------------------
+counter = 0
 
 with open(file_input + input_file_type, "r") as rf_txt:
     with open(file_input + outputFileNameExtension + input_file_type, "w") as wf_txt:
-        for line in txt:
+        for line in rf_txt:
             row = line.strip("\n").split("\t")
             t_in_l = float(row[0])
             t = t_in_l / freq
@@ -38,8 +39,7 @@ with open(file_input + input_file_type, "r") as rf_txt:
             # this is when it moves from 0 sec to 0.02 sec
             else:
                 avg_x = sum(list_of_xs) / len(list_of_xs)
-                list_of_xt.append(avg_x)
-                list_of_ts_w_xt.append([t_main, avg_x])
+                wf_txt.write(str(t_main) + '\t' + str(avg_x) + '\n') # new
                 list_of_xs = []
 
                 t_main = t_main + t_step / freq  # counter/freq, counter =+
@@ -50,17 +50,16 @@ with open(file_input + input_file_type, "r") as rf_txt:
 
             counter = counter + 1
 
-avg_x = sum(list_of_xs) / len(list_of_xs)
-list_of_xt.append(avg_x)
-list_of_ts_w_xt.append([t, avg_x])
+        avg_x = sum(list_of_xs) / len(list_of_xs)
+        wf_txt.write(str(t) + '\t' + str(avg_x) + '\n') # new
+
+
 
 # This section of code stores a list of the average x displacements of every time stamp of the shake table.
 # These values will be subtracted from displacements of the building to get relative displacements of the building
 # to its foundation / table.
 
-print(list_of_xs)
-print()
-print(list_of_xt)
+
 
 test = 1
 
