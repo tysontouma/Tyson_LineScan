@@ -39,7 +39,7 @@ with open(file_input + input_file_type, "r") as rf_txt:
 
             # this is when it moves from 0 sec to 0.02 sec
             else:
-                avg_x = sum(list_of_xs) / len(list_of_xs)
+                avg_x = round(sum(list_of_xs) / len(list_of_xs),8)
                 wf_txt.write(str(t_main) + '\t' + str(avg_x) + '\n') # new
                 list_of_xs = []
 
@@ -51,7 +51,7 @@ with open(file_input + input_file_type, "r") as rf_txt:
 
             counter = counter + 1
 
-        avg_x = sum(list_of_xs) / len(list_of_xs)
+        avg_x = round(sum(list_of_xs) / len(list_of_xs),8)
         wf_txt.write(str(t) + '\t' + str(avg_x) + '\n') # new
 
 
@@ -68,9 +68,9 @@ with open(file_input + input_file_type, "r") as rf_txt2:
                 x_sub = float(row_sub[1])
                 if dont_forget_me:
                     if abs(t_rel - t_sub) < 0.00000001:
-                        x_rel = x_orig - x_sub
+                        x_rel = round(x_orig - x_sub,8)
                         wf_txt2.write(str(t_sub) + '\t' + str(x_rel) + '\t' + str(y_orig) + '\n')
-                        list_of_x_rel.append(x_rel)
+                        # list_of_x_rel.append(x_rel)
                 for line in rf_txt2:
                     row_rel = line.strip("\n").split("\t")
                     t_in_l_rel = float(row_rel[0])
@@ -78,9 +78,9 @@ with open(file_input + input_file_type, "r") as rf_txt2:
                     x_orig = float(row_rel[1])
                     y_orig = float(row_rel[2])
                     if abs(t_rel - t_sub) < 0.00000001:
-                        x_rel = x_orig - x_sub
+                        x_rel = round(x_orig - x_sub,8)
                         wf_txt2.write(str(t_sub) + '\t' + str(x_rel) + '\t' + str(y_orig) + '\n')
-                        list_of_x_rel.append(x_rel)
+                        # list_of_x_rel.append(x_rel)
                     else:
                         dont_forget_me = True
                         break
