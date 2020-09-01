@@ -23,7 +23,7 @@ with open(file_input + input_file_type, "r") as rf_txt:
     with open(file_input + outputFileNameExtension_minus + input_file_type, "w") as wf_txt:
         for line in rf_txt:
             row = line.strip("\n").split("\t")
-            t_in_l = float(row[0])
+            t_in_l = round(float(row[0]),2)
             t = t_in_l / freq
             x = float(row[1])
             y = float(row[2])
@@ -43,7 +43,7 @@ with open(file_input + input_file_type, "r") as rf_txt:
                 wf_txt.write(str(t_main) + '\t' + str(avg_x) + '\n') # new
                 list_of_xs = []
 
-                t_main = t_main + t_step / freq  # counter/freq, counter =+
+                t_main = round(t_main + t_step / freq,2)  # counter/freq, counter =+
                 # i wrote this whole section again because it skips the first entry of 0.02 sec
                 if abs(y - y_relative) <= tol:
                     # list_of_ts_w_xs.append([t, x])
@@ -64,7 +64,7 @@ with open(file_input + input_file_type, "r") as rf_txt2:
         with open(file_input + outputFileNameExtension + input_file_type , "w") as wf_txt2:
             for line in rf_txt3:
                 row_sub = line.strip("\n").split("\t")
-                t_sub = float(row_sub[0])
+                t_sub = round(float(row_sub[0]),2)
                 x_sub = float(row_sub[1])
                 if dont_forget_me:
                     if abs(t_rel - t_sub) < 0.00000001:
@@ -74,7 +74,7 @@ with open(file_input + input_file_type, "r") as rf_txt2:
                 for line in rf_txt2:
                     row_rel = line.strip("\n").split("\t")
                     t_in_l_rel = float(row_rel[0])
-                    t_rel = t_in_l_rel / freq
+                    t_rel = round(t_in_l_rel / freq,2)
                     x_orig = float(row_rel[1])
                     y_orig = float(row_rel[2])
                     if abs(t_rel - t_sub) < 0.00000001:
@@ -86,8 +86,8 @@ with open(file_input + input_file_type, "r") as rf_txt2:
                         break
 
                     counter2 = counter2 + 1
-print(list_of_x_rel)
-print(len(list_of_x_rel))
+# print(list_of_x_rel)
+# print(len(list_of_x_rel))
 test = 1
 
 
