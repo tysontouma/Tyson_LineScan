@@ -55,7 +55,6 @@ with open(file_input + input_file_type, "r") as rf_txt:
         wf_txt.write(str(t) + '\t' + str(avg_x) + '\n') # new
 
 
-t_sub_main = 0
 counter2 = 0
 list_of_x_rel = []
 dont_forget_me = False
@@ -70,7 +69,7 @@ with open(file_input + input_file_type, "r") as rf_txt2:
                 if dont_forget_me:
                     if abs(t_rel - t_sub) < 0.00000001:
                         x_rel = x_orig - x_sub
-                        # wf_txt2.write(str(t_sub_main) + '\t' + str(x_rel) + '\t' + str(y_orig) + '\n')
+                        wf_txt2.write(str(t_sub) + '\t' + str(x_rel) + '\t' + str(y_orig) + '\n')
                         list_of_x_rel.append(x_rel)
                 for line in rf_txt2:
                     row_rel = line.strip("\n").split("\t")
@@ -80,7 +79,7 @@ with open(file_input + input_file_type, "r") as rf_txt2:
                     y_orig = float(row_rel[2])
                     if abs(t_rel - t_sub) < 0.00000001:
                         x_rel = x_orig - x_sub
-                        # wf_txt2.write(str(t_sub) + '\t' + str(x_rel) + '\t' + str(y_orig) + '\n')
+                        wf_txt2.write(str(t_sub) + '\t' + str(x_rel) + '\t' + str(y_orig) + '\n')
                         list_of_x_rel.append(x_rel)
                     else:
                         dont_forget_me = True
