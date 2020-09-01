@@ -24,7 +24,7 @@ step_count = 10
 y_relative = -2  # m
 tol = 0.11  # m
 frequency = 50  # hz
-outputFileNameExtension = '_copy'
+outputFileNameExtension = '_copy_reduction'
 
 # output text file is a csv with columns t,x-xt,y
 

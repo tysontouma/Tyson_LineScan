@@ -5,7 +5,7 @@ outputFileNameExtension_minus = '_minus'
 outputFileNameExtension = '_copy'
 
 t_min = 0 # sec
-t_max = 9 # sec
+t_max = 9.25  # sec
 freq = 50 #s^-1
 t_main = t_min
 t_step = 1 # m
@@ -18,6 +18,14 @@ list_of_ts_w_xs = [] # not used
 
 # End user input -------------------------------------------------------------------------------------------------------
 counter = 0
+
+# Something wrong with this section of code, doesnt get all of the
+# time stamps and put it in the text file.
+# It skips time stamp 450 m // 9 sec and stops at time stamp 451 m // 9.02 sec,
+# when in reality the final time stamp is 463 m // 9.26 sec
+
+# FIXED: realized this was caused by t_max = 9 sec
+# EVEN MORE FIXED: realized time stamp 463 m // 9.26 sec doesnt have enough points where one is within tol of y_relative
 
 with open(file_input + input_file_type, "r") as rf_txt:
     with open(file_input + outputFileNameExtension_minus + input_file_type, "w") as wf_txt:
@@ -51,7 +59,7 @@ with open(file_input + input_file_type, "r") as rf_txt:
 
             counter = counter + 1
 
-        avg_x = round(sum(list_of_xs) / len(list_of_xs),8)
+        avg_x = round(sum(list_of_xs) / len(list_of_xs),8) #error with division of zero
         wf_txt.write(str(t) + '\t' + str(avg_x) + '\n') # new
 
 
@@ -101,10 +109,13 @@ test = 1
 
 
 
-test = 1
+
 
 # QUESTIONS FOR TATSU:
 # 1) because of floating my relative x displacements are having too many decimals.I was going to
 # use the round function on everything to 8 decimal places (what the original text file has). Thoughts?
+# I ROUNDED
 # 2) is the "dont_forget_me" part of the code worrysome to you?
+# WORKING GOOD
 # 3) I apologize for all of the variables, any suggestions on to make the code cleaner and tidy it up?
+# #THOUGHTS?
