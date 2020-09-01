@@ -1,20 +1,20 @@
 # User Input -------------------------------------------------------------------------------------------------------
-file_input = 'ten_lines'
+file_input = 't3_lineplot'
 input_file_type = '.txt'
 outputFileNameExtension_minus = '_minus'
 outputFileNameExtension = '_copy'
 
-t_min = 0
-t_max = 0.1
-freq = 50
+t_min = 0 # sec
+t_max = 9 # sec
+freq = 50 #s^-1
 t_main = t_min
-t_step = 1
+t_step = 1 # m
 y_relative = -2  # m
 tol = 0.11 # m
 list_of_xs = []
-list_of_xt = []
-list_of_ts_w_xt = []
-list_of_ts_w_xs = []
+list_of_xt = [] # not used
+list_of_ts_w_xt = [] # not used
+list_of_ts_w_xs = [] # not used
 
 # End user input -------------------------------------------------------------------------------------------------------
 counter = 0
